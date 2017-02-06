@@ -1,0 +1,20 @@
+{
+  "name": "vue-detached-scrollbar",
+  "version": "0.1.0",
+  "description": "to be filled later",
+  "main": "src/index.js",
+  "files": [
+    "components/Gallery.vue",
+    "components/ScrollBar.vue"
+  ],
+  "author": "Ozan Gulle",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.1.10"
+  },
+  "devDependencies": {
+    "vue-loader": "^10.3.0",
+    "vue-style-loader": "^2.0.0",
+    "vue-template-compiler": "^2.1.10"
+  }
+}
