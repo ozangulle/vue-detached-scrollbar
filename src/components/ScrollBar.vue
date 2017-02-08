@@ -35,7 +35,7 @@
                 } else if (100 < distPerc) {
                     distPerc = 100;
                 }
-                this.$bus.$emit('change', (distPerc));
+                this.$scrollBus.$emit('change', (distPerc));
                 slider.style.left = (distPerc + diff) + '%';
             },
             elementPos(el) {

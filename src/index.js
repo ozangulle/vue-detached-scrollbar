@@ -3,17 +3,17 @@ import ScrollBar from './components/ScrollBar';
 import Gallery from './components/Gallery';
 
 
-Object.defineProperty(Vue.prototype, '$bus', {
+Object.defineProperty(Vue.prototype, '$scrollBus', {
     get() {
-        return this.$root.bus;
+        return this.$root.scrollBus;
     }
 });
 
-var bus = new Vue({})
+const scrollBus = new Vue({})
 
 const app = new Vue({
   data: {
-    bus,
+    scrollBus,
   },
   components: {
     ScrollBar,
@@ -26,5 +26,5 @@ export default app;
 export {
 	ScrollBar,
 	Gallery,
-  bus,
+  scrollBus,
 };

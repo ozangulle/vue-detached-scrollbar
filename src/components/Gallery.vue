@@ -14,7 +14,7 @@
         },
         created() {
             this.wrapperId = Math.random().toString(36).substring(7);
-            this.$bus.$on('change', (msg) => {
+            this.$scrollBus.$on('change', (msg) => {
                 this.calculateBack(msg);
             });
         },
