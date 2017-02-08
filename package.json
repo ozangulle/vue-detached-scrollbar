@@ -1,7 +1,7 @@
 {
   "name": "vue-detached-scrollbar",
-  "version": "0.1.0",
-  "description": "to be filled later",
+  "version": "0.1.0-alpha.1",
+  "description": "A simple scrollbar that can be detached from a main container",
   "main": "./src/index.js",
   "files": [
     "components/Gallery.vue",
