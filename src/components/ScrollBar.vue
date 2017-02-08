@@ -16,11 +16,10 @@
         },
         methods: {
             bindMouseDown() {
-                window.addEventListener('mousemove', this.calculatePosition);
+                document.onmousemove = this.calculatePosition;
             },
             clear() {
-                window.removeEventListener('mousemove', 
-                    this.calculatePosition);
+                document.onmousemove = null;
             },
             calculatePosition(event) {
                 const mousePos = event.clientX;
