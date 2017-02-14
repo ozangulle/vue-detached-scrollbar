@@ -1,24 +1,17 @@
+var path = require('path');
+var webpack = require('webpack');
+
 module.exports = {
-  // This is the "main" file which should include all other modules
-  entry: './src/main.js',
-  // Where should the compiled file go?
+  entry: './src/index.js',
   output: {
-    // To the `dist` folder
-    path: './dist',
-    // With the filename `build.js` so it's dist/build.js
-    filename: 'build.js'
+    path: path.join(__dirname, 'dist'),
+    filename: 'index.js'
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json']
+    extensions: ['.vue', '.js', '.json'],
   },
   module: {
-    rules: [
-      {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: "pre",
-        include: ['src'],
-      },
+    loaders: [
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -26,12 +19,8 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: ['src']
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
+        exclude: /node_modules/
+      }
     ]
   }
 }

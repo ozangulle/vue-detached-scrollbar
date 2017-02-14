@@ -11,20 +11,6 @@ Object.defineProperty(Vue.prototype, '$scrollBus', {
 
 const scrollBus = new Vue({})
 
-const app = new Vue({
-  data: {
-    scrollBus,
-  },
-  components: {
-    ScrollBar,
-    Gallery,
-  },
-});
-
-export default app;
-
-export {
-	ScrollBar,
-	Gallery,
-  scrollBus,
-};
+export {ScrollBar};
+export {scrollBus};
+export {Gallery};
