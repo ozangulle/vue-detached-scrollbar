@@ -10,7 +10,7 @@
     "build": "webpack -p",
     "dev": "webpack"
   },
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
   "author": "Ozan Gulle",
   "license": "MIT",
   "dependencies": {

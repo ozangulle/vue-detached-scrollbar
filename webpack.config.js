@@ -3,9 +3,19 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
+  externals: {
+    "Vue": {
+      commonjs: "vue",
+      commonjs2: "vue",
+      amd: "vue",
+      root: "Vue"
+    }
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'index.js'
+    filename: 'index.js',
+    library: 'vue-detached.scrollbar',
+    libraryTarget: 'umd'
   },
   resolve: {
     extensions: ['.vue', '.js', '.json'],
