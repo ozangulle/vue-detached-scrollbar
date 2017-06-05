@@ -21,22 +21,51 @@
             clear() {
                 document.onmousemove = null;
             },
+            /**
+            * Mouse position is clientX.
+            * 
+            **/
             calculatePosition(event) {
+                // Mouse position
                 const mousePos = event.clientX;
-                const posInBar = mousePos - this.scrollbarOffset;
-                const effectiveWidth = this.barWidth - this.sliderWidth;
-                const absolutePerc = (posInBar * 100) / this.barWidth;
-                const sliderToBar = (this.sliderWidth * 100) / this.barWidth;
-                let distPerc = (posInBar * 100) / effectiveWidth;
-                const diff = absolutePerc - distPerc;
-                const slider = document.getElementById(this.sliderId);
-                if (0 > distPerc) {
-                    distPerc = 0;
-                } else if (100 < distPerc) {
-                    distPerc = 100;
+                const sliderOffset = this.calculateSliderOffset();
+
+                // Position in bar
+                const absolutePosOnBar = mousePos - this.barOffset;
+                let posOnBar = mousePos - this.barOffset - (this.sliderWidth / 2);
+
+                const activeLength = this.barWidth - this.sliderWidth;
+
+                const clickableAreaLength = this.barWidth - (this.sliderWidth);
+
+                if (posOnBar > activeLength) {
+                    posOnBar = activeLength;
                 }
-                this.$scrollBus.$emit('change', (distPerc));
-                slider.style.left = (distPerc + diff) + '%';
+ 
+                
+                // If the mouse curser is left or right of the scrollbar
+                // (i.e. not on the scrollbar)
+                // stop doing scrolling
+                if ((absolutePosOnBar < 0) || (posOnBar > this.barWidth + this.barOffset))  {
+                    this.clear();
+                }
+
+                const slider = document.getElementById(this.sliderId);
+
+                let percToSend = (posOnBar * 100 ) / clickableAreaLength;
+                let displayPerc = posOnBar; // percToSend - percDiff;
+
+                if (0 > displayPerc) {
+                    displayPerc = 0;
+                } /* else if (this.barWidth < displayPerc) {
+                    displayPerc = this.barWidth;
+                }*/
+
+                console.log(percToSend, posOnBar);
+
+                this.$scrollBus.$emit('change', (percToSend));
+                slider.style.left = displayPerc + 'px';
+
             },
             elementPos(el) {
                 const rect = el.getBoundingClientRect(),
@@ -44,6 +73,12 @@
 	            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 	            return rect.left + scrollLeft;
             },
+            calculateSliderOffset() {
+                const slider = document.getElementById(this.sliderId);
+                //const rect = slider.getBoundingClientRect();
+                //return rect.left;
+                return this.elementPos(slider);
+            }
         },
         computed: {
             barWidth() {
@@ -54,14 +89,15 @@
                 const slider = document.getElementById(this.sliderId);
                 return slider.offsetWidth;
             },
-            scrollbarOffset() {
+            barOffset() {
                 const bar = document.getElementById(this.barId);
                 return this.elementPos(bar);
             },
             sliderOffset() {
                 const slider = document.getElementById(this.sliderId);
-                const rect = slider.getBoundingClientRect();
-                return rect.left;
+                //const rect = slider.getBoundingClientRect();
+                //return rect.left;
+                return this.elementPos(slider);
             },
         },
         created() {
