@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'index.js',
-    library: 'vue-detached.scrollbar',
+    library: 'vue-detached-scrollbar',
     libraryTarget: 'umd'
   },
   resolve: {
