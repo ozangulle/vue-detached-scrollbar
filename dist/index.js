@@ -6450,14 +6450,13 @@ exports.default = {
             var sliderOffset = this.calculateSliderOffset();
 
             var absolutePosOnBar = mousePos - this.barOffset;
-            var posOnBar = mousePos - this.barOffset - this.sliderWidth / 2;
 
-            var activeLength = this.barWidth - this.sliderWidth;
+            var posOnBar = absolutePosOnBar - this.sliderWidth / 2;
 
             var clickableAreaLength = this.barWidth - this.sliderWidth;
 
-            if (posOnBar > activeLength) {
-                posOnBar = activeLength;
+            if (posOnBar > clickableAreaLength) {
+                posOnBar = clickableAreaLength;
             }
 
             if (absolutePosOnBar < 0 || posOnBar > this.barWidth + this.barOffset) {
@@ -6467,16 +6466,10 @@ exports.default = {
             var slider = document.getElementById(this.sliderId);
 
             var percToSend = posOnBar * 100 / clickableAreaLength;
+
             var displayPerc = posOnBar;
 
-            if (0 > displayPerc) {
-                displayPerc = 0;
-            }
-
-            console.log(percToSend, posOnBar);
-
             this.$scrollBus.$emit('change', percToSend);
-
             slider.style.left = displayPerc + 'px';
         },
         elementPos: function elementPos(el) {
@@ -6503,11 +6496,6 @@ exports.default = {
         barOffset: function barOffset() {
             var bar = document.getElementById(this.barId);
             return this.elementPos(bar);
-        },
-        sliderOffset: function sliderOffset() {
-            var slider = document.getElementById(this.sliderId);
-
-            return this.elementPos(slider);
         }
     },
     created: function created() {

@@ -21,28 +21,25 @@
             clear() {
                 document.onmousemove = null;
             },
-            /**
-            * Mouse position is clientX.
-            * 
-            **/
             calculatePosition(event) {
-                // Mouse position
                 const mousePos = event.clientX;
                 const sliderOffset = this.calculateSliderOffset();
 
-                // Position in bar
+                // Making the lowest point on the bar zero
                 const absolutePosOnBar = mousePos - this.barOffset;
-                let posOnBar = mousePos - this.barOffset - (this.sliderWidth / 2);
+                
+                // Half of the slider is insignificant for calculating
+                // the length travelled by it. Hence - (this.sliderWidth / 2)
+                let posOnBar = absolutePosOnBar - (this.sliderWidth / 2);
 
-                const activeLength = this.barWidth - this.sliderWidth;
+                // The length of the bar actually used for calculation purposes
+                const clickableAreaLength = this.barWidth - this.sliderWidth;
 
-                const clickableAreaLength = this.barWidth - (this.sliderWidth);
-
-                if (posOnBar > activeLength) {
-                    posOnBar = activeLength;
+                // The maximum distance on the bar
+                if (posOnBar > clickableAreaLength) {
+                    posOnBar = clickableAreaLength;
                 }
  
-                
                 // If the mouse curser is left or right of the scrollbar
                 // (i.e. not on the scrollbar)
                 // stop doing scrolling
@@ -52,16 +49,17 @@
 
                 const slider = document.getElementById(this.sliderId);
 
+                // The distance travelled as percentage
+                // to be sent to the gallery component
                 let percToSend = (posOnBar * 100 ) / clickableAreaLength;
-                let displayPerc = posOnBar; // percToSend - percDiff;
 
+                let displayPerc = posOnBar;
+
+                // This is done to prevent the slider move behind
+                // its "point 0"
                 if (0 > displayPerc) {
                     displayPerc = 0;
-                } /* else if (this.barWidth < displayPerc) {
-                    displayPerc = this.barWidth;
-                }*/
-
-                console.log(percToSend, posOnBar);
+                }
 
                 this.$scrollBus.$emit('change', (percToSend));
                 slider.style.left = displayPerc + 'px';
@@ -92,12 +90,6 @@
             barOffset() {
                 const bar = document.getElementById(this.barId);
                 return this.elementPos(bar);
-            },
-            sliderOffset() {
-                const slider = document.getElementById(this.sliderId);
-                //const rect = slider.getBoundingClientRect();
-                //return rect.left;
-                return this.elementPos(slider);
             },
         },
         created() {
