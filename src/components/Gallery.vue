@@ -6,6 +6,8 @@
 
 
 <script>
+    import scrollBus from './ScrollBus';
+
     export default {
         data() {
             return{
@@ -14,7 +16,7 @@
         },
         created() {
             this.wrapperId = Math.random().toString(36).substring(7);
-            this.$scrollBus.$on('change', (msg) => {
+            scrollBus.$on('change', (msg) => {
                 this.calculateBack(msg);
             });
         },

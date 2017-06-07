@@ -7,6 +7,8 @@
 </template>
 
 <script>
+    import scrollBus from './ScrollBus';
+
     export default {
         data() {
             return{
@@ -61,7 +63,7 @@
                     displayPerc = 0;
                 }
 
-                this.$scrollBus.$emit('change', (percToSend));
+                scrollBus.$emit('change', (percToSend));
                 slider.style.left = displayPerc + 'px';
 
             },
