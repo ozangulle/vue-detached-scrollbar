@@ -10,7 +10,7 @@ Demo: https://3f13de1b52.github.io/vue-detached-scrollbar/
 
 ### Installation
 
-Simple type
+Simply type
 
 ```sh
 npm install --save vue-detached-scrollbar
@@ -62,8 +62,7 @@ Due to the nature of the mouse event listener, you should put a onmouseup="docum
 
 * ~~Explain how to use the package in detail~~
 * ~~Make a demo page to illustrate how it works~~
-* Write tests
-* Make a compiled version
+* ~~Make a compiled version~~
 
 ### Development
 
@@ -74,4 +73,3 @@ License
 ----
 
 MIT
-
