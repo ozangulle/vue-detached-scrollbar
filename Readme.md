@@ -6,7 +6,7 @@ It's still in the beta phase.
 
 ### Installation
 
-Demo: https://3f13de1b52.github.io/vue-detached-scrollbar/
+Demo: https://ozangulle.github.io/vue-detached-scrollbar/
 
 ### Installation
 
