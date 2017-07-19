@@ -1,6 +1,6 @@
 {
   "name": "vue-detached-scrollbar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple scrollbar that can be detached from a main container",
   "repository": {
     "type": "git",
