@@ -1,0 +1,42 @@
+.scrollbar {
+  height: 10px;
+  background-color: white;
+  width: 100%;
+  border: solid 1px black;
+}
+
+.scrollbar-slider {
+  position: relative;
+  width: 30px;
+  height: 12px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.scrollbar-wrapper {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gallery-wrapper {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.gallery-item {
+    display: inline-block;
+    width: auto;
+    padding: 5px;
+}
+
+.gallery-item img {
+  height: 100px;
+  width: auto;
+}
+
+.mid {
+  text-align: center;
+}
