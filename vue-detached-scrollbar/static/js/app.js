@@ -72,7 +72,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             loop: 40,
             image: 'http://writm.com/wp-content/uploads/2016/08/Cat-hd-wallpapers.jpg',
-            images: ['/vue-detached-scrollbar/static/horse-2574327_640.jpg', '/vue-detached-scrollbar/static/hydrangea-2552663_640.jpg', '/vue-detached-scrollbar/static/tomatoes-2559809_640.jpg', '/vue-detached-scrollbar/static/animal-2572781_640.jpg']
+            images: ['static/horse-2574327_640.jpg', 'static/hydrangea-2552663_640.jpg', 'static/tomatoes-2559809_640.jpg', 'static/animal-2572781_640.jpg']
         };
     },
 
