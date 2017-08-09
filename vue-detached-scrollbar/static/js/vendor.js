@@ -10171,4 +10171,3 @@ module.exports = Vue$3;
 /***/ })
 
 });
-//# sourceMappingURL=vendor.js.map
