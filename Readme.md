@@ -59,8 +59,8 @@ You can put whatever content you want to use between the tags <gallery> </galler
 ```javascript
 <gallery>
     <div id="gallery" class="gallery">
-        <div class="gallery-item" v-for="stuff in loop">
-            {{stuff}}
+        <div class="gallery-item" v-for="image in imageGallery">
+            <img :src="image.src">
         </div>
     </div>
 </gallery>
