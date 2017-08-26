@@ -14,9 +14,9 @@ Simply type
 npm install --save vue-detached-scrollbar
 ```
 
-Obviously, you'll need Vue.js to run it.
+You'll need Vue.js to run it.
 
-Currently, there is no compiled dist version. The components, Gallery and Scroll-Bar communicate with each other via scrollBus. 
+The components, Gallery and ScrollBar communicate with each other via scrollBus. 
 You'll need to import and register it as data.
 
 ```javascript
@@ -41,6 +41,9 @@ export default {
 }
 ```
 
+You can customize the scrollbar using the css classes .scrollbar, .scrollbar-slider, and .scrollbar-wrapper. .scrollbar refers to the bar itself whereas .scrollbar-slider is the slider in it.
+
+
 ```javascript
 import {Gallery} from 'vue-detached-scrollbar';
 
@@ -51,7 +54,21 @@ export default {
 }
 ```
 
-You can put whatever content you want to use between the tags <gallery> </gallery>
+You can put whatever content you want to use between the tags <gallery> </gallery>. For example:
+
+```javascript
+<gallery>
+    <div id="gallery" class="gallery">
+        <div class="gallery-item" v-for="stuff in loop">
+            {{stuff}}
+        </div>
+    </div>
+</gallery>
+```
+
+It's important to keep the id 'gallery'. The package uses the id to select it.
+
+
 
 Due to the nature of the mouse event listener, you should put a onmouseup="document.onmousemove = null" on the main body of the document.
 
