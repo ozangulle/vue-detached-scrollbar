@@ -1,5 +1,6 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = {
   entry: './src/index.js',
@@ -11,6 +12,7 @@ module.exports = {
       root: "Vue"
     }
   },
+  plugins: [new VueLoaderPlugin()],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'index.js',
@@ -21,15 +23,23 @@ module.exports = {
     extensions: ['.vue', '.js', '.json'],
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+        options: {
+          loaders: {
+            js: 'babel-loader'
+          }
+        }
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: [{
+          loader: "babel-loader",
+          options: { presets: ['@babel/preset-env'] },
+        }]
       }
     ]
   }
