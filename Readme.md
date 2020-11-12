@@ -2,8 +2,6 @@
 
 This is a simple scrollbar that you can detach from the element that you want to scroll in. It comes with a minimal HTML structure.
 
-### Installation
-
 Demo: https://ozangulle.github.io/vue-detached-scrollbar/
 
 ### Installation
@@ -75,7 +73,7 @@ Due to the nature of the mouse event listener, you should put a onmouseup="docum
 
 ### To-do
 
-* Write tests
+* Upgrade to Vue 3
 
 ### Development
 
